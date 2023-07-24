@@ -384,3 +384,6 @@ GitHub.sublime-settings
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .history
+
+# Allow
+!spring-boot-basic-project.zip
