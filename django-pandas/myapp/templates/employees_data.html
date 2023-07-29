@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Data</title>
+</head>
+<body>
+    <h1>Employee Data</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Department</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees_df.itertuples %}
+            <tr>
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.age }}</td>
+                <td>{{ employee.department }}</td>
+                <td>{{ employee.salary }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
