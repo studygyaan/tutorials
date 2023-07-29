@@ -388,3 +388,4 @@ GitHub.sublime-settings
 # Allow
 !spring-boot-basic-project.zip
 !django-basic-project.zip
+!django-drf-basic-project.zip
