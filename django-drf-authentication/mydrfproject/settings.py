@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
-    'accounts',
+    'accounts.apps.AccountsConfig',
     'django_rest_passwordreset',
 ]
 
@@ -55,13 +55,11 @@ REST_FRAMEWORK = {
 # Email Backend Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # Replace with your preferred backend
 
-EMAIL_HOST = 'your_email_host'  # Replace with your email host
 EMAIL_PORT = 587  # Replace with your email port
 EMAIL_USE_TLS = True  # Set to False if your email server doesn't use TLS
-EMAIL_HOST_USER = 'your_email_username'  # Replace with your email username
-EMAIL_HOST_PASSWORD = 'your_email_password'  # Replace with your email password
-
-
+EMAIL_HOST = 'smtp.gmail.com'  # Replace with your email host
+EMAIL_HOST_USER = 'your_email'  # Replace with your email username
+EMAIL_HOST_PASSWORD = 'your_app_password'  # Replace with your email password
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -78,7 +76,7 @@ ROOT_URLCONF = 'mydrfproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR + '/templates/',],
+        'DIRS': [BASE_DIR, 'templates/',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
