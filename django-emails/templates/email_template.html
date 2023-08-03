@@ -1,0 +1,23 @@
+<!-- email_template.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Email Template</title>
+</head>
+<body>
+    <h2>Hello {{ username }},</h2>
+    <p>
+        Thank you for signing up with our website. Please click the link below to verify your email address:
+    </p>
+    <a href="{{ verification_link }}">{{ verification_link }}</a>
+    <p>
+        If you have any questions or need further assistance, feel free to contact us.
+    </p>
+    <p>
+        Best regards,
+        Your Website Team
+    </p>
+</body>
+</html>
