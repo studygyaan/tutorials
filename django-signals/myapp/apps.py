@@ -7,3 +7,5 @@ class MyappConfig(AppConfig):
 
     def ready(self):
         import myapp.signals
+        from .signals import custom_signal
+        custom_signal.connect(myapp.signals.custom_signal_handler)
