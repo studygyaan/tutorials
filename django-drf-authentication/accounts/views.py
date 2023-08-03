@@ -10,6 +10,7 @@ from django.contrib.auth import update_session_auth_hash
 from .serializers import ChangePasswordSerializer
 from rest_framework.views import APIView
 from .utils import generate_otp, send_otp_email
+from django.shortcuts import redirect
 
 # REGISTER
 @api_view(['POST'])
@@ -109,3 +110,11 @@ class ValidateOTP(APIView):
             return Response({'token': token.key}, status=status.HTTP_200_OK)
         else:
             return Response({'error': 'Invalid OTP.'}, status=status.HTTP_400_BAD_REQUEST)
+
+# verification view
+def verify_email(request, pk):
+    user = CustomUser.objects.get(pk=pk)
+    if not user.email_verified:
+        user.email_verified = True
+        user.save()
+    return redirect('http://localhost:8000/')  # Replace with your desired redirect URL
