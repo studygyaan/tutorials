@@ -4,7 +4,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 
 # Assuming your dataset is in a CSV file named 'house_data.csv', you can read it into a pandas DataFrame as follows:
-df = pd.read_csv('/kaggle/input/housedata/data.csv')
+df = pd.read_csv('data.csv')
 
 # Let's take a look at the first few rows of the dataset to understand its structure
 print(df.head())
