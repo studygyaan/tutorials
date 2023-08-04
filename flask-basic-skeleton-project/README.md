@@ -1,1 +1,1 @@
-Find this project tutorial on https://studygyaan.com/flask/flask-python-basic-skeleton-project
+Find this project tutorial on https://studygyaan.com/flask/best-folder-and-directory-structure-for-a-flask-project
