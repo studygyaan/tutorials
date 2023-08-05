@@ -1,1 +1,1 @@
-Find this project tutorial on https://studygyaan.com/flask/best-folder-and-directory-structure-for-a-flask-project
+Find this project tutorial on https://studygyaan.com/flask/deploy-machine-learning-model-in-flask-project
