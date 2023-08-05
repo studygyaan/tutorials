@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real Estate Price Prediction</title>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Predict Price</button>
+    </form>
+
+    {% if predicted_price %}
+    <div>
+        <h2>Predicted Price: ${{ predicted_price }}</h2>
+    </div>
+    {% endif %}
+</body>
+</html>
