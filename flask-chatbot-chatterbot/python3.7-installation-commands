@@ -1,0 +1,22 @@
+sudo apt update
+sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev wget libbz2-dev
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt install python3.7
+python3.7 --version
+
+python3.7 -m pip install pip
+alias pip3.7="python3.7 -m pip"
+
+sudo apt-get install python3.7-distutils
+
+pip3.7 install virtualenv
+
+python3.7 -m virtualenv MyEnv
+
+
+
+pip3.7 install Flask
+pip3.7 install ChatterBot==1.0.8
+pip3.7 install chatterbot-corpus==1.2.0
+pip3.7 install spacy==2.1.9
+pip3.7 install nltk==3.8.1
