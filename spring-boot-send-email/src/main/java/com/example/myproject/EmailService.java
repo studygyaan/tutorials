@@ -3,12 +3,15 @@ package com.example.myproject;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
+
+import java.io.File;
 
 @Service
 public class EmailService {
@@ -39,6 +42,22 @@ public class EmailService {
             helper.setSubject(subject);
             String htmlContent = templateEngine.process(templateName, context);
             helper.setText(htmlContent, true);
+            mailSender.send(mimeMessage);
+        } catch (MessagingException e) {
+            // Handle exception
+        }
+    }
+
+    public void sendEmailWithAttachment(String to, String subject, String body, String filePath) {
+        MimeMessage mimeMessage = mailSender.createMimeMessage();
+        try {
+            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
+            helper.setTo(to);
+            helper.setSubject(subject);
+            helper.setText(body);
+
+            FileSystemResource file = new FileSystemResource(new File(filePath));
+            helper.addAttachment(file.getFilename(), file);
             mailSender.send(mimeMessage);
         } catch (MessagingException e) {
             // Handle exception

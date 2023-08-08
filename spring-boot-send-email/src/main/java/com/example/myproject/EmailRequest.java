@@ -4,6 +4,15 @@ public class EmailRequest {
     private String to;
     private String subject;
     private String body;
+    private String attachmentFilePath;
+
+    public String getAttachmentFilePath() {
+        return attachmentFilePath;
+    }
+
+    public void setAttachmentFilePath(String attachmentFilePath) {
+        this.attachmentFilePath = attachmentFilePath;
+    }
 
     public String getTo() {
         return to;

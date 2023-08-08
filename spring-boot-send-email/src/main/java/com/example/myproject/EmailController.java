@@ -30,5 +30,11 @@ public class EmailController {
         emailService.sendEmailWithHtmlTemplate(emailRequest.getTo(), emailRequest.getSubject(), "email-template", context);
         return "HTML email sent successfully!";
     }
+
+    @PostMapping("/send-email-with-attachment")
+    public String sendEmailWithAttachment(@RequestBody EmailRequest emailRequest) {
+        emailService.sendEmailWithAttachment(emailRequest.getTo(), emailRequest.getSubject(), emailRequest.getBody(), emailRequest.getAttachmentFilePath());
+        return "Email with attachment sent successfully!";
+    }
 }
 
