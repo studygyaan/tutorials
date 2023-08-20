@@ -27,6 +27,14 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.camel.springboot/camel-spring-boot-starter -->
+		<dependency>
+			<groupId>org.apache.camel.springboot</groupId>
+			<artifactId>camel-spring-boot-starter</artifactId>
+			<version>4.0.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
