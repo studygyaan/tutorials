@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .forms import MyForm
 
-def hello_world(request):
-    return HttpResponse("Hello, world!")
+def convertor_view(request):
+    form = MyForm()
+    return render(request, 'index.html', {'form': form})
