@@ -12,6 +12,7 @@
 
 <body>
     <div class="container mt-5">
+        <h3 class="text-center pb-4">Text to HTML and HTML to Text Convertor</h3>
         <div class="row">
             <div class="col-lg-6">
                 <div class="texteditor p-3 border rounded">
@@ -19,14 +20,17 @@
                     {{ form.media }}
                     {{ form.as_p }}
                     <div class="d-grid gap-2">
-                        <input type="button" class="btn btn-primary" value="Convert" onclick="TextConvert()">
+                        <input type="button" class="btn btn-primary" value="Convert to HTML" onclick="TextConvert()">
                     </div>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="htmleditor p-3 border rounded">
                     <h2 class="mb-3">HTML Output</h2>
-                    <textarea class="form-control" rows="18" id="htmldata"></textarea>
+                    <textarea class="form-control" rows="16" id="htmldata"></textarea>
+                    <div class="d-grid gap-2 mt-3">
+                        <input type="button" class="btn btn-primary" value="Convert to Text" onclick="HTMLConvert()">
+                    </div>
                 </div>
             </div>
         </div>
@@ -38,6 +42,18 @@
                 var x = editor.getData();
                 var y = document.getElementById('htmldata');
                 y.innerHTML = x;
+            } else {
+                console.error("CKEditor instance 'id_content' not found.");
+            }
+        }
+    </script>
+    <script>
+        function HTMLConvert() {
+            var editor = CKEDITOR.instances['id_content'];
+            if (editor) {
+                var htmlData = document.getElementById('htmldata').value;
+                console.log(htmlData);
+                editor.setData(htmlData);
             } else {
                 console.error("CKEditor instance 'id_content' not found.");
             }
