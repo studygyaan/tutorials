@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Gallery with Upload</title>
+    <style>
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .gallery-item {
+            width: 200px;
+            margin: 10px;
+        }
+        .gallery-item img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h2>Image Gallery with Upload</h2>
+    
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+
+    <h3>Gallery Images:</h3>
+    <div class="gallery">
+        {% for image in gallery %}
+            <div class="gallery-item">
+                <img src="{{ image.image.url }}" alt="Gallery Image">
+            </div>
+        {% empty %}
+            <p>No images in the gallery yet.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

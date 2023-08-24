@@ -1,5 +1,5 @@
 from django import forms
-from .models import UploadedFile, UploadedImage
+from .models import GalleryImage
 
 class MultipleFileInput(forms.ClearableFileInput):
     allow_multiple_selected = True
@@ -17,16 +17,9 @@ class MultipleFileField(forms.FileField):
             result = single_file_clean(data, initial)
         return result
 
-class UploadFileForm(forms.Form):
-    files = MultipleFileField()
-
-class UploadFileForm2(forms.ModelForm):
-    class Meta:
-        model = UploadedFile
-        fields = ('file',)
-
-
 class UploadImageForm(forms.ModelForm):
+    images = MultipleFileField(widget=MultipleFileInput())
+    
     class Meta:
-        model = UploadedImage
-        fields = ('image',)
+        model = GalleryImage
+        fields = ('images',)

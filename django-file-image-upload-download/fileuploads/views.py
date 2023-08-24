@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import UploadedFile
-from .forms import UploadFileForm, UploadFileForm2
+from .models import UploadedFile, UploadedImage
+from .forms import UploadFileForm, UploadFileForm2, UploadImageForm
 from django.http import HttpResponse
 
 def upload_and_display_files(request):
@@ -33,3 +33,13 @@ def download_file(request, file_id):
     response = HttpResponse(uploaded_file.file, content_type='application/force-download')
     response['Content-Disposition'] = f'attachment; filename="{uploaded_file.file.name}"'
     return response
+
+def upload_image(request):
+    if request.method == 'POST':
+        form = UploadImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+    else:
+        form = UploadImageForm()
+    images = UploadedImage.objects.all()
+    return render(request, 'upload_image.html', {'form': form, 'images': images})
