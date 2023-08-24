@@ -1,4 +1,5 @@
 from django import forms
+from .models import UploadedFile
 
 class MultipleFileInput(forms.ClearableFileInput):
     allow_multiple_selected = True
@@ -18,3 +19,8 @@ class MultipleFileField(forms.FileField):
 
 class UploadFileForm(forms.Form):
     files = MultipleFileField()
+
+class UploadFileForm2(forms.ModelForm):
+    class Meta:
+        model = UploadedFile
+        fields = ('file',)
