@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Manager</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Task Manager</h1>
+    <div>
+        <input type="text" id="taskInput" placeholder="Enter task">
+        <button id="addTaskBtn">Add Task</button>
+    </div>
+    <ul id="taskList">
+        <!-- Tasks will be displayed here -->
+    </ul>
+    <script>
+        $(document).ready(function() {
+            // Set CSRF token for AJAX requests
+            $.ajaxSetup({
+                headers: { "X-CSRFToken": "{{ csrf_token }}" }
+            });
+    
+            // Function to load tasks from the server
+            function loadTasks() {
+                $.ajax({
+                    url: '/get_tasks/',
+                    method: 'GET',
+                    success: function(data) {
+                        $('#taskList').empty();
+                        data.forEach(function(task) {
+                            $('#taskList').append('<li>' + task.title + '</li>');
+                        });
+                    }
+                });
+            }
+    
+            // Load tasks on page load
+            loadTasks();
+    
+            // Function to add a new task
+            $('#addTaskBtn').click(function() {
+                var title = $('#taskInput').val();
+                $.ajax({
+                    url: '/add_task/',
+                    method: 'POST',
+                    data: { title: title },
+                    success: function() {
+                        $('#taskInput').val('');
+                        loadTasks();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
