@@ -1,1 +1,1 @@
-Find this tutorial on https://studygyaan.com/django/django-rest-framework-drf-basic-skeleton-project
+Find this tutorial on https://studygyaan.com/django/yaml-xml-json-response-renderer-in-django-rest-framework
