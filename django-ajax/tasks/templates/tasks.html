@@ -1,3 +1,5 @@
+<!-- tasks/templates/tasks.html -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +21,7 @@
             $.ajaxSetup({
                 headers: { "X-CSRFToken": "{{ csrf_token }}" }
             });
-    
+
             // Function to load tasks from the server
             function loadTasks() {
                 $.ajax({
@@ -28,15 +30,47 @@
                     success: function(data) {
                         $('#taskList').empty();
                         data.forEach(function(task) {
-                            $('#taskList').append('<li>' + task.title + '</li>');
+                            var taskItem = '<li>' +
+                                '<input type="checkbox" ' + (task.completed ? 'checked' : '') + '>' +
+                                '<span>' + task.title + '</span>' +
+                                '<button class="deleteTaskBtn" data-id="' + task.id + '">Delete</button>' +
+                                '</li>';
+                            $('#taskList').append(taskItem);
                         });
                     }
                 });
             }
-    
+
             // Load tasks on page load
             loadTasks();
-    
+
+            // Function to update task status
+            $('#taskList').on('change', 'input[type="checkbox"]', function() {
+                var taskId = $(this).siblings('.deleteTaskBtn').data('id');
+                var completed = $(this).prop('checked');
+                $.ajax({
+                    url: '/update_task_status/',
+                    method: 'POST',
+                    data: { id: taskId, completed: completed },
+                    success: function() {
+                        loadTasks();
+                    }
+                });
+            });
+
+            // Function to delete a task
+            $('#taskList').on('click', '.deleteTaskBtn', function() {
+                var taskId = $(this).data('id');
+                $.ajax({
+                    url: '/delete_task/',
+                    method: 'POST',
+                    data: { id: taskId },
+                    success: function() {
+                        loadTasks();
+                    }
+                });
+            });
+
             // Function to add a new task
             $('#addTaskBtn').click(function() {
                 var title = $('#taskInput').val();
