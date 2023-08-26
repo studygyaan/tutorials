@@ -1,20 +1,84 @@
-<!-- tasks/templates/tasks.html -->
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Task Manager</title>
+    <title>Task App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        #container {
+            width: 100%;
+            max-width: 700px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        h1, p {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #taskInput {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-right: 10px;
+        }
+        #addTaskBtn {
+            padding: 10px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        #addTaskBtn:hover {
+            background-color: #45a049;
+        }
+        .task {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .task-text {
+            flex-grow: 1;
+        }
+        .deleteTaskBtn {
+            background: none;
+            border: none;
+            color: #e74c3c;
+            cursor: pointer;
+        }
+        .completed {
+            text-decoration: line-through;
+        }
+    </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <h1>Task Manager</h1>
-    <div>
-        <input type="text" id="taskInput" placeholder="Enter task">
-        <button id="addTaskBtn">Add Task</button>
+    <div id="container">
+        <h1>Task App</h1>
+        <p>Built using Django and Ajax Crud Operations</p>
+        <div class="task">
+            <input type="text" id="taskInput" placeholder="Enter task">
+            <button id="addTaskBtn">Add Task</button>
+        </div>
+        <div id="taskList">
+            <!-- Tasks will be displayed here -->
+        </div>
     </div>
-    <ul id="taskList">
-        <!-- Tasks will be displayed here -->
-    </ul>
     <script>
         $(document).ready(function() {
             // Set CSRF token for AJAX requests
@@ -30,11 +94,11 @@
                     success: function(data) {
                         $('#taskList').empty();
                         data.forEach(function(task) {
-                            var taskItem = '<li>' +
+                            var taskItem = '<div class="task">' +
                                 '<input type="checkbox" ' + (task.completed ? 'checked' : '') + '>' +
-                                '<span>' + task.title + '</span>' +
-                                '<button class="deleteTaskBtn" data-id="' + task.id + '">Delete</button>' +
-                                '</li>';
+                                '<span class="task-text' + (task.completed ? ' completed' : '') + '">' + task.title + '</span>' +
+                                '<button class="deleteTaskBtn" data-id="' + task.id + '"><i class="fas fa-trash"></i></button>' +
+                                '</div>';
                             $('#taskList').append(taskItem);
                         });
                     }
