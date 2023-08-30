@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import HelloWorldAPIView
+from .views import RestrictedView
 
 urlpatterns = [
-    path('hello/', HelloWorldAPIView.as_view(), name='hello_world'),
+    path('restricted/', RestrictedView.as_view(), name='restricted'),
 ]
