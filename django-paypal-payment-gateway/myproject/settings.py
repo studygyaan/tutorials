@@ -50,6 +50,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+PAYPAL_CLIENT_ID = 'your_paypal_client_id'
+PAYPAL_SECRET = 'your_paypal_secret'
+
 ROOT_URLCONF = 'myproject.urls'
 
 TEMPLATES = [
