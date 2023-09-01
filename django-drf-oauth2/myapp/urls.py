@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import HelloWorldAPIView
+from .views import ProtectedResourceView
 
 urlpatterns = [
-    path('hello/', HelloWorldAPIView.as_view(), name='hello_world'),
+    path('api/protected-resource/', ProtectedResourceView.as_view(), name='hello_world'),
 ]
