@@ -48,3 +48,6 @@ def execute_payment(request):
 
 def payment_failed(request):
     return render(request, 'payment_failed.html')
+
+def payment_checkout(request):
+    return render(request, 'checkout.html')
