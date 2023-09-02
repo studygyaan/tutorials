@@ -1,0 +1,25 @@
+<!-- payment_form.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Paytm Payment</title>
+</head>
+<body>
+    <h1>Paytm Payment Form</h1>
+    <form method="post" action="https://securegw.paytm.in/theia/processTransaction">
+        {% csrf_token %}
+        <input type="hidden" name="MID" value="{{ paytm_dict.MID }}">
+        <input type="hidden" name="ORDER_ID" value="{{ paytm_dict.ORDER_ID }}">
+        <input type="hidden" name="CUST_ID" value="{{ paytm_dict.CUST_ID }}">
+        <input type="hidden" name="TXN_AMOUNT" value="{{ paytm_dict.TXN_AMOUNT }}">
+        <input type="hidden" name="CHANNEL_ID" value="{{ paytm_dict.CHANNEL_ID }}">
+        <input type="hidden" name="INDUSTRY_TYPE_ID" value="{{ paytm_dict.INDUSTRY_TYPE_ID }}">
+        <input type="hidden" name="WEBSITE" value="{{ paytm_dict.WEBSITE }}">
+        <input type="hidden" name="EMAIL" value="{{ paytm_dict.EMAIL }}">
+        <input type="hidden" name="MOBILE_NO" value="{{ paytm_dict.MOBILE_NO }}">
+        <input type="hidden" name="CALLBACK_URL" value="{{ paytm_dict.CALLBACK_URL }}">
+        <input type="hidden" name="CHECKSUMHASH" value="{{ paytm_dict.CHECKSUMHASH }}">
+        <button type="submit">Pay Now</button>
+    </form>
+</body>
+</html>

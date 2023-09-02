@@ -27,6 +27,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# paytm_integration
+PAYTM_MID = "YOUR_MID_HERE"
+PAYTM_KEY = "YOUR_MERCHANT_KEY"  # 16, 24, or 32 bytes AES key
+PAYTM_WEBSITE = "YOUR_WEBSITE_NAME"
+PAYTM_CLIENT_ID = "YOUR_CLIENT_ID_HERE"
+PAYTM_CALLBACK_URL = "MERCANT_CALLBACK_URL"
+
 
 # Application definition
 
@@ -37,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myapp',
+    'payment_app',
 ]
 
 MIDDLEWARE = [
