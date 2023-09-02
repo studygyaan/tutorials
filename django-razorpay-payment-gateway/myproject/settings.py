@@ -37,7 +37,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'payment_app',
 ]
+
+# razorpay_integration/settings.py
+RAZORPAY_API_KEY = 'YOUR_RAZORPAY_API_KEY'
+RAZORPAY_API_SECRET = 'YOUR_RAZORPAY_API_SECRET'
+
+# To Enable Popus in Django or else it will block the payment popup
+SECURE_CROSS_ORIGIN_OPENER_POLICY = "same-origin-allow-popups"
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
