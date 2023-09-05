@@ -1,4 +1,5 @@
-# coronabot-chatterbot
+# Create AI ChatBot Project using Flask, Python
+
 CoronaBot is a chat bot for answering question regarding Coronavirus
 
 Tutorial - https://studygyaan.com/flask/create-web-based-chatbot-in-python-flask-chatterbot
