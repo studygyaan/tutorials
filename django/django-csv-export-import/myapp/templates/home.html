@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Django App</title>
+</head>
+<body>
+    <h1>Welcome to My Django App</h1>
+    <p>Choose an action:</p>
+    <ul>
+        <li><a href="{% url 'export_csv' %}">Export Data to CSV</a></li>
+        <li><a href="{% url 'export_query_to_csv' %}">Export QuerySet to CSV</a></li>
+        <li><a href="{% url 'export_html_to_csv' %}">Export HTML Table to CSV</a></li>
+        <li><a href="{% url 'import_csv' %}">Import Data to CSV</a></li>
+        <!-- Add more links to other features as needed -->
+    </ul>
+    
+</body>
+</html>
