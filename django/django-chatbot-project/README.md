@@ -1,4 +1,5 @@
-# coronabot-chatterbot
+# Building Python Django Chatbot with Chatterbot
+
 CoronaBot is a chat bot for answering question regarding Coronavirus
 
 Tutorial - https://studygyaan.com/django/building-python-django-chatbot-with-chatterbot

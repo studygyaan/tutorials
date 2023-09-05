@@ -1,3 +1,5 @@
+# How to Extend Django User Model
+
 Find this Tutorial on https://studygyaan.com/django/how-to-extend-django-user-model
 
 1. Abstract Base User - https://studygyaan.com/django/how-to-extend-django-user-model-using-abstractbaseuser
