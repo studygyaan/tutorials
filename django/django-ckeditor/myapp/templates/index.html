@@ -1,0 +1,21 @@
+<!-- template.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Django App</title>
+    {% load static %}
+</head>
+<body>
+    <!-- Your CKEditor-enabled form field -->
+    <form method="post">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        CKEDITOR.replace('id_content');  // Replace 'id_content' with the actual field ID
+    </script>
+</body>
+</html>
