@@ -1,0 +1,76 @@
+<!-- translator_app/templates/translator_app/home.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Language Translator</title>
+</head>
+
+<body>
+    <h1>Language Translator</h1>
+    <form id="translation-form">
+        <textarea name="text" rows="4" cols="50"></textarea>
+        <br>
+        <select name="target_language">
+            <option value="hi">Hindi</option>
+            <option value="en">English</option>
+            <option value="it">Italian</option>
+            <option value="fr">French</option>
+            <option value="zn-cn">Chinese</option>
+            <option value="ja">Japanese</option>
+            <option value="de">German</option>
+            <option value="gu">Gujarati</option>
+            <option value="bn">Bengali</option>
+            <!-- Add more language options as needed -->
+        </select>
+        <button type="submit">Translate</button>
+    </form>
+    <br>
+    <div id="translation-result"></div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Get the CSRF token from the cookie
+            const csrftoken = getCookie('csrftoken');
+
+            $('#translation-form').submit(function (e) {
+                e.preventDefault();
+                const formData = $(this).serialize();
+                $.ajax({
+                    type: 'POST',
+                    url: '/translate_text/',
+                    data: formData,
+                    headers: {
+                        'X-CSRFToken': csrftoken  // Include the CSRF token in the headers
+                    },
+                    success: function (data) {
+                        $('#translation-result').text('Translation: ' + data.translation);
+                    },
+                    error: function () {
+                        $('#translation-result').text('Translation error.');
+                    }
+                });
+            });
+
+            // Function to get the CSRF token from cookies
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        // Search for the CSRF token cookie
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+        });
+    </script>
+</body>
+
+</html>
