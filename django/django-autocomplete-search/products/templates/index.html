@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Search</title>
+    <!-- Include jQuery and jQuery UI -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+    <h1>Product Search</h1>
+    <form>
+        <label for="search">Search for a product:</label>
+        <input type="text" id="search" name="search">
+    </form>
+    
+    <script>
+        $(function() {
+            $("#search").autocomplete({
+                source: "{% url 'product-autocomplete' %}",
+                minLength: 2, // Minimum characters before triggering autocomplete
+            });
+        });
+    </script>
+</body>
+</html>
