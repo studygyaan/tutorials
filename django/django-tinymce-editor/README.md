@@ -1,3 +1,3 @@
-# Django Basic Template Boilerplate Skeleton Project
+# Integrate TinyMCE Text Editor in Django Website
 
-Find this Tutorial on https://studygyaan.com/django/django-basic-skeleton-project
+Find this Tutorial on https://studygyaan.com/django/django-with-tinymce-text-editor-integration

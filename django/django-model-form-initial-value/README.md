@@ -1,3 +1,3 @@
-# Django Basic Template Boilerplate Skeleton Project
+# How to Provide Initial Values to Django Model Forms
 
-Find this Tutorial on https://studygyaan.com/django/django-basic-skeleton-project
+Find this Tutorial on https://studygyaan.com/django/how-to-give-initial-value-to-model-forms
