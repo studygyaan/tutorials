@@ -1,0 +1,44 @@
+<!-- charts/templates/charts/chart.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chart.js Example</title>
+    <!-- Include Chart.js via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div style="width: 50%; margin: 0 auto;">
+        <canvas id="myChart"></canvas>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('/chart-data/')
+                .then(response => response.json())
+                .then(data => {
+                    const ctx = document.getElementById('myChart').getContext('2d');
+                    
+                    new Chart(ctx, {
+                        type: data.chart_type,
+                        data: {
+                            labels: data.labels,
+                            datasets: [{
+                                label: data.label,
+                                data: data.values,
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                });
+        });
+    </script>
+</body>
+</html>
