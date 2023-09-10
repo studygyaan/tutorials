@@ -1,0 +1,46 @@
+<!-- charts/templates/chart.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Highcharts.js Example</title>
+    <!-- Include Highcharts.js via CDN -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+</head>
+<body>
+    <div style="width: 80%; margin: 0 auto;">
+        <div id="chart-container"></div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Fetch data from your Django backend
+            fetch('/chart-data/')
+                .then(response => response.json())
+                .then(data => {
+                    Highcharts.chart('chart-container', {
+                        chart: {
+                            type: data.chart_type
+                        },
+                        title: {
+                            text: data.label
+                        },
+                        xAxis: {
+                            categories: data.labels
+                        },
+                        yAxis: {
+                            title: {
+                                text: 'Values'
+                            }
+                        },
+                        series: [{
+                            name: 'Chart Data',
+                            data: data.values
+                        }]
+                    });
+                });
+        });
+    </script>
+</body>
+</html>
