@@ -1,0 +1,16 @@
+{% load static %}
+
+{% autoescape off %}
+Hello {{ user.username }},
+
+Please click the link below to activate your account:
+
+{% block reset_link %}
+<a href="http://{{ domain }}{% url 'activate' uidb64=uid token=token %}">Activate your account</a>
+{% endblock %}
+
+If you did not register on our site, please ignore this message.
+
+Best regards,
+Your Website Team
+{% endautoescape %}

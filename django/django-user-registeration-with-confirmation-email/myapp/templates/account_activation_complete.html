@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}Activation Email Sent{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+    <p>Welcome, {{ user.username }}! You have Successfully Activated the Account and Logged in!</p>
+    {% endif %}
+{% endblock %}
