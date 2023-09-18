@@ -12,9 +12,9 @@
 <body>
     <header>
         {% if user.is_authenticated %}
-        <p>Welcome, {{ user.username }}! <a href="{% url 'logout' %}">Logout</a></p>
+        <p>Hello, {{ user.username }}! | <a href="{% url 'change_password' %}">Change Password</a> | <a href="{% url 'logout' %}">Logout</a></p>
         {% else %}
-        <p><a href="{% url 'login' %}">Login</a> | <a href="{% url 'signup' %}">Sign up</a></p>
+        <p><a href="{% url 'login' %}">Login</a> | <a href="{% url 'signup' %}">Sign up</a> | <a href="{% url 'password_reset' %}">Reset Password</a></p>
         {% endif %}
     </header>
 
