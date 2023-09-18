@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Your Website Title{% endblock %}</title>
+    <!-- Add your CSS and JavaScript links here -->
+</head>
+
+<body>
+    <header>
+        {% if message %}
+            {{message}}
+        {% endif %}
+        {% if user.is_authenticated %}
+        <p>Hello, {{ user.username }}! | <a href="{% url 'change_password' %}">Change Password</a> | <a href="{% url 'logout' %}">Logout</a></p>
+        {% else %}
+        <p><a href="{% url 'login' %}">Login</a> | <a href="{% url 'signup' %}">Sign up</a> | <a href="{% url 'password_reset' %}">Reset Password</a></p>
+        <p><a href="{% url 'send_otp' %}">Login with OTP</a></p>
+        {% endif %}
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <!-- Add your footer content here -->
+    </footer>
+</body>
+
+</html>

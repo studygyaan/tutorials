@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Verify OTP{% endblock %}
+
+{% block content %}
+  <h2>Verify OTP Sent Successful</h2>
+  <form method="post" id="otp-verify-form">
+    {% csrf_token %}
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br>
+    <label for="otp">OTP:</label>
+    <input type="text" id="otp" name="otp" required>
+    <button type="submit">Verify OTP</button>
+  </form>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  // JavaScript to handle form submission and response
+  document.getElementById('otp-verify-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const email = document.getElementById('email').value;
+    const otp = document.getElementById('otp').value;
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('otp', otp);
+
+    fetch('{% url "verify_otp" %}', {
+      method: 'POST',
+      body: formData,
+    })
+      .then(response => response.json())
+      .then(data => {
+        alert(data.message);
+        if (data.message === 'Login successful') {
+          // Redirect to the desired page upon successful login
+          window.location.href = '{% url "home" %}';  // Replace with your home URL
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred.');
+      });
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Send OTP{% endblock %}
+
+{% block content %}
+  <h2>Send OTP</h2>
+  <form method="post" id="otp-form">
+    {% csrf_token %}
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <button type="submit">Send OTP</button>
+  </form>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  // JavaScript to handle form submission and response
+  document.getElementById('otp-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const email = document.getElementById('email').value;
+    const formData = new FormData();
+    formData.append('email', email);
+
+    fetch('{% url "send_otp" %}', {
+      method: 'POST',
+      body: formData,
+    })
+      .then(response => response.json())
+      .then(data => {
+        alert(data.message);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred.');
+      });
+  });
+</script>
+{% endblock %}
