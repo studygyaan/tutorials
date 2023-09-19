@@ -1,0 +1,15 @@
+{% load socialaccount %}
+{% providers_media_js %}
+<html>
+    <head>
+        <title>Index</title>
+    </head>
+    <body>
+        <h3>Social Account Login Django</h3>
+        {% if user.is_authenticated %}
+        <p>Welcome, {{ user.username }}! <a href="{% url 'account_logout' %}">Logout</a></p>
+        {% else %}
+        <p><a href="{% provider_login_url 'google' %}">Login with Google</a></p>
+        {% endif %}
+    </body>
+</html>
