@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.github',
 ]
 
 AUTHENTICATION_BACKENDS = [
@@ -60,6 +62,22 @@ SOCIALACCOUNT_PROVIDERS = {
             'client_id': 'YOUR_CLIENT_ID',
             'secret': 'YOUR_SECRET_ID',
             'key': ''
+        }
+    },
+    'facebook': {
+        'METHOD': 'oauth2',
+        'SCOPE': ['email', 'public_profile'],
+        'APP': {
+            'client_id': 'YOUR_APP_ID',
+            'secret': 'YOUR_APP_SECRET',
+        }
+    },
+    'github': {
+        'METHOD': 'oauth2',
+        'SCOPE': ['user:email'],
+        'APP': {
+            'client_id': 'YOUR_CLIENT_ID',
+            'secret': 'YOUR_CLIENT_SECRET',
         }
     }
 }
