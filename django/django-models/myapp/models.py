@@ -8,3 +8,12 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+class UserProfile(models.Model):
+    username = models.CharField(max_length=50)
+    email = models.EmailField()
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['username', 'email'], name='unique_username_email')
+        ]
